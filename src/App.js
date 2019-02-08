@@ -17,6 +17,55 @@ class App extends Component {
 
   componentDidMount() {
     this.getFromLocalStorage();
+    this.loadFacebook();
+  }
+
+  loadFacebook() {
+    (function(d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement(s);
+      js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    })(document, 'script', 'facebook-jssdk');
+
+    window.fbAsyncInit = function() {
+      window.FB.init({
+        appId: '123763181800839',
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: 'v3.2',
+        state: true
+      });
+      window.FB.getLoginStatus(function(response) {
+        console.log(response);
+        if (response.status === 'connected') {
+          window.FB.api('/me/accounts?fields=name,access_token', function(response) {
+            console.log(response);
+            console.log('Successful login for: ' + response.data.name);
+          });
+        } else {
+          console.log('failed!');
+        }
+      });
+    };
+  }
+
+  checkLoginState() {
+    window.FB.getLoginStatus(function(response) {
+      console.log(response);
+      if (response.status === 'connected') {
+        window.FB.api('/me/accounts?fields=name,access_token', function(response) {
+          console.log('Successful login for: ' + response.name);
+        });
+      } else {
+        console.log('failed!');
+      }
+    });
   }
 
   getFromLocalStorage() {
@@ -63,6 +112,14 @@ class App extends Component {
                   <Icon name="facebook" />
                   <Header.Content>Facebook</Header.Content>
                 </Header>
+                <div
+                  className="fb-login-button"
+                  style={{display: 'block', textAlign: 'center'}}
+                  data-size="large"
+                  data-button-type="continue_with"
+                  data-auto-logout-link="false"
+                  data-use-continue-as="false"
+                />
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
