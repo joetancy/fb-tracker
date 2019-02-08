@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/fb-ctracker/precache-manifest.5cc0ecb7639fd72ace2edd0703392e67.js"
+  "/fb-ctracker/precache-manifest.44618b314eb48276b8903f3dddbe4ad2.js"
 );
 
 workbox.clientsClaim();
