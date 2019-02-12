@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "c3fff2b3a45e0a9a5859",
+    "revision": "0279de5f1ee6633ec38d",
     "url": "/fb-tracker/static/css/main.e1520fa3.chunk.css"
   },
   {
-    "revision": "c3fff2b3a45e0a9a5859",
-    "url": "/fb-tracker/static/js/main.c3fff2b3.chunk.js"
+    "revision": "0279de5f1ee6633ec38d",
+    "url": "/fb-tracker/static/js/main.0279de5f.chunk.js"
   },
   {
     "revision": "a228ae2222b8c371230d",
@@ -36,12 +36,12 @@ self.__precacheManifest = [
     "url": "/fb-tracker/static/media/outline-icons.ad97afd3.ttf"
   },
   {
-    "revision": "9c74e172f87984c48ddf5c8108cabe67",
-    "url": "/fb-tracker/static/media/flags.9c74e172.png"
-  },
-  {
     "revision": "0ab54153eeeca0ce03978cc463b257f7",
     "url": "/fb-tracker/static/media/icons.0ab54153.woff2"
+  },
+  {
+    "revision": "9c74e172f87984c48ddf5c8108cabe67",
+    "url": "/fb-tracker/static/media/flags.9c74e172.png"
   },
   {
     "revision": "faff92145777a3cbaf8e7367b4807987",
@@ -84,7 +84,7 @@ self.__precacheManifest = [
     "url": "/fb-tracker/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "cf57ac398eba045ab0362325cf98ad63",
+    "revision": "564447910d92c8aa69a549d4208e3208",
     "url": "/fb-tracker/index.html"
   }
 ];
