@@ -1,35 +1,27 @@
 self.__precacheManifest = [
   {
-    "revision": "a364586e7965adbb18d9",
-    "url": "/fb-tracker/static/css/main.3f16174f.chunk.css"
+    "revision": "2665d934c9fbed33c570",
+    "url": "/fb-tracker/static/js/main.2665d934.chunk.js"
   },
   {
-    "revision": "a364586e7965adbb18d9",
-    "url": "/fb-tracker/static/js/main.a364586e.chunk.js"
+    "revision": "9a7d7716ce87aa713b66",
+    "url": "/fb-tracker/static/css/1.2749f495.chunk.css"
   },
   {
-    "revision": "18ee9130e36f14715804",
-    "url": "/fb-tracker/static/css/1.7959bc66.chunk.css"
-  },
-  {
-    "revision": "18ee9130e36f14715804",
-    "url": "/fb-tracker/static/js/1.18ee9130.chunk.js"
+    "revision": "9a7d7716ce87aa713b66",
+    "url": "/fb-tracker/static/js/1.9a7d7716.chunk.js"
   },
   {
     "revision": "0db3029e74a23b40b7aa",
     "url": "/fb-tracker/static/js/runtime~main.0db3029e.js"
   },
   {
-    "revision": "cd6c777f1945164224dee082abaea03a",
-    "url": "/fb-tracker/static/media/outline-icons.cd6c777f.woff2"
-  },
-  {
     "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
     "url": "/fb-tracker/static/media/outline-icons.ef60a4f6.woff"
   },
   {
-    "revision": "9c74e172f87984c48ddf5c8108cabe67",
-    "url": "/fb-tracker/static/media/flags.9c74e172.png"
+    "revision": "cd6c777f1945164224dee082abaea03a",
+    "url": "/fb-tracker/static/media/outline-icons.cd6c777f.woff2"
   },
   {
     "revision": "701ae6abd4719e9c2ada3535a497b341",
@@ -38,6 +30,10 @@ self.__precacheManifest = [
   {
     "revision": "ad97afd3337e8cda302d10ff5a4026b8",
     "url": "/fb-tracker/static/media/outline-icons.ad97afd3.ttf"
+  },
+  {
+    "revision": "9c74e172f87984c48ddf5c8108cabe67",
+    "url": "/fb-tracker/static/media/flags.9c74e172.png"
   },
   {
     "revision": "0ab54153eeeca0ce03978cc463b257f7",
@@ -84,7 +80,7 @@ self.__precacheManifest = [
     "url": "/fb-tracker/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "9144b03cef7067420c53d634fe784aa4",
+    "revision": "83ecdcbb95d79406ec7d7888b1590b51",
     "url": "/fb-tracker/index.html"
   }
 ];
