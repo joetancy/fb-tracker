@@ -1,16 +1,16 @@
 {
   "main.css": "/fb-tracker/static/css/main.5064c2ea.chunk.css",
-  "main.js": "/fb-tracker/static/js/main.26ae371a.chunk.js",
-  "main.js.map": "/fb-tracker/static/js/main.26ae371a.chunk.js.map",
+  "main.js": "/fb-tracker/static/js/main.94e049a3.chunk.js",
+  "main.js.map": "/fb-tracker/static/js/main.94e049a3.chunk.js.map",
   "static/css/1.7959bc66.chunk.css": "/fb-tracker/static/css/1.7959bc66.chunk.css",
-  "static/js/1.8e404ae5.chunk.js": "/fb-tracker/static/js/1.8e404ae5.chunk.js",
-  "static/js/1.8e404ae5.chunk.js.map": "/fb-tracker/static/js/1.8e404ae5.chunk.js.map",
+  "static/js/1.18ee9130.chunk.js": "/fb-tracker/static/js/1.18ee9130.chunk.js",
+  "static/js/1.18ee9130.chunk.js.map": "/fb-tracker/static/js/1.18ee9130.chunk.js.map",
   "runtime~main.js": "/fb-tracker/static/js/runtime~main.0db3029e.js",
   "runtime~main.js.map": "/fb-tracker/static/js/runtime~main.0db3029e.js.map",
   "static/media/semantic.min.css": "/fb-tracker/static/media/brand-icons.a1a749e8.svg",
-  "static/css/1.7959bc66.chunk.css.map": "/fb-tracker/static/css/1.7959bc66.chunk.css.map",
   "static/css/main.5064c2ea.chunk.css.map": "/fb-tracker/static/css/main.5064c2ea.chunk.css.map",
+  "static/css/1.7959bc66.chunk.css.map": "/fb-tracker/static/css/1.7959bc66.chunk.css.map",
   "index.html": "/fb-tracker/index.html",
-  "precache-manifest.79944c5f5e95d8777e3a63639b6e5217.js": "/fb-tracker/precache-manifest.79944c5f5e95d8777e3a63639b6e5217.js",
+  "precache-manifest.fc0da6991ed883908c7d5532498376c9.js": "/fb-tracker/precache-manifest.fc0da6991ed883908c7d5532498376c9.js",
   "service-worker.js": "/fb-tracker/service-worker.js"
 }
