@@ -4,7 +4,11 @@
   "private": true,
   "homepage": "https://joetancy.github.io/fb-tracker",
   "dependencies": {
+    "firebase": "^5.8.2",
+    "firebaseui": "^3.5.2",
     "gh-pages": "^2.0.1",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-scripts": "2.1.3",
