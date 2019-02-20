@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
-import firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/firebase-app';
+import 'firebase/firebase-firestore';
 import * as firebaseui from 'firebaseui';
 import _ from 'lodash';
 import moment from 'moment';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
 import {
   Container,
   Grid,
@@ -17,6 +21,8 @@ import {
   Segment,
   Label
 } from 'semantic-ui-react';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 class App extends Component {
   constructor(props) {
@@ -37,6 +43,7 @@ class App extends Component {
     this.loadFacebook = this.loadFacebook.bind(this);
     this.addToList = this.addToList.bind(this);
     this.forceRefresh = this.forceRefresh.bind(this);
+    this.buildReport = this.buildReport.bind(this);
     this.firebaseUI = this.firebaseUI.bind(this);
     this.deleteRow = this.deleteRow.bind(this);
     this.signOut = this.signOut.bind(this);
@@ -134,7 +141,13 @@ class App extends Component {
       .get()
       .then((doc) => {
         if (doc.exists) {
-          this.setState({loading: false, data: doc.data().data});
+          let data = _.orderBy(doc.data().data, 'reach', 'asc');
+          this.setState({
+            loading: false,
+            data: data,
+            column: 'reach',
+            direction: 'ascending'
+          });
         } else {
           console.log('No such document!');
           this.setState({loading: false});
@@ -170,6 +183,57 @@ class App extends Component {
     this.state.data.forEach((element) => {
       this.getMetricsRefresh(element);
     });
+  }
+
+  buildReport() {
+    let pdfData = [];
+    let data = _.orderBy(this.state.data, 'reach', 'asc');
+    pdfData.push([
+      'Page',
+      'Name',
+      'Impressions',
+      'Reach',
+      'Engagement',
+      'Age',
+      'Link'
+    ]);
+    _.forEach(data, (element) => {
+      let reach = {text: element.reach.toLocaleString()};
+      if (element.reach < 25000) {
+        reach['fillColor'] = '#F08080';
+      } else if (element.reach < 50000) {
+        reach['fillColor'] = '#FF8C00';
+      } else if (element.reach < 100000) {
+        reach['fillColor'] = '#FFFF00';
+      } else if (element.reach < 500000) {
+        reach['fillColor'] = '#00FF7F';
+      }
+      pdfData.push([
+        element.pageName,
+        element.name,
+        element.impressions.toLocaleString(),
+        reach,
+        element.engagement.toLocaleString(),
+        moment(element.created_time, 'DD/MM/YYYY h:mm a').fromNow(),
+        {text: 'Link', link: element.link, color: 'blue'}
+      ]);
+    });
+    var docDefinition = {
+      pageOrientation: 'landscape',
+      pageSize: 'A4',
+      content: [
+        {text: 'Facebook Reach Tracker', margin: [0, 0, 0, 16], fontSize: 24},
+        {
+          layout: 'lightHorizontalLines',
+          table: {
+            widths: ['auto', '*', 'auto', 'auto', 'auto', 'auto', 'auto'],
+            body: pdfData
+          }
+        },
+        {text: 'Generated on ' + moment().format('MMMM Do YYYY, h:mm:ss a'), margin: [0, 16, 0, 0], fontSize: 8},
+      ]
+    };
+    pdfMake.createPdf(docDefinition).open();
   }
 
   populateSelect() {
@@ -429,25 +493,17 @@ class App extends Component {
                   <>
                     <Label circular color="red" empty />
                     {' < 25,000'}
-                  </>
-                  <br />
-                  <>
+                    <br />
                     <Label circular color="orange" empty />
                     {' < 50,000'}
-                  </>
-                  <br />
-                  <>
-                    <Label circular color="blue" empty />
+                    <br />
+                    <Label circular color="yellow" empty />
                     {' < 100,000'}
-                  </>
-                  <br />
-                  <>
+                    <br />
                     <Label circular color="green" empty />
                     {' < 500,000'}
-                  </>
-                  <br />
-                  <>
-                    <Icon name="star outline" fitted />
+                    <br />
+                    <Label circular color="blue" empty />
                     {' > 500,000'}
                   </>
                 </Segment>
@@ -480,9 +536,14 @@ class App extends Component {
             <Grid.Row>
               <Grid.Column width={10}>
                 <Button
-                  positive
+                  color="green"
                   content="Force Refresh"
                   onClick={this.forceRefresh}
+                />
+                <Button
+                  color="blue"
+                  content="Build Report"
+                  onClick={this.buildReport}
                 />
                 <Button content="Sign Out" onClick={this.signOut} />
               </Grid.Column>
@@ -514,7 +575,7 @@ class App extends Component {
                       >
                         Engagement
                       </Table.HeaderCell>
-                      <Table.HeaderCell>Days Posted</Table.HeaderCell>
+                      <Table.HeaderCell>Age</Table.HeaderCell>
                       <Table.HeaderCell>Action</Table.HeaderCell>
                     </Table.Row>
                   </Table.Header>
@@ -525,7 +586,6 @@ class App extends Component {
                         pageName,
                         postId,
                         name,
-                        // message,
                         impressions,
                         reach,
                         engagement,
@@ -533,35 +593,38 @@ class App extends Component {
                         type,
                         created_time
                       }) => (
-                        <Table.Row>
+                        <Table.Row key={postId}>
                           <Table.Cell>{pageName}</Table.Cell>
                           <Table.Cell>{name}</Table.Cell>
-                          {/* <Table.Cell>{message}</Table.Cell> */}
                           <Table.Cell>
                             {impressions.toLocaleString()}
                           </Table.Cell>
                           <Table.Cell>
                             {reach < 25000 ? (
-                              <Header as="h5" color="red">
+                              <Label color="red" size="large">
+                                <Icon name="warning sign" />
                                 {reach.toLocaleString()}
-                              </Header>
+                              </Label>
                             ) : reach < 50000 ? (
-                              <Header as="h5" color="orange">
+                              <Label color="orange" size="large">
+                                <Icon name="attention" />
                                 {reach.toLocaleString()}
-                              </Header>
+                              </Label>
                             ) : reach < 100000 ? (
-                              <Header as="h5" color="blue">
+                              <Label color="yellow" size="large">
+                                <Icon name="star half full" />
                                 {reach.toLocaleString()}
-                              </Header>
+                              </Label>
                             ) : reach < 500000 ? (
-                              <Header as="h5" color="green">
+                              <Label color="green" size="large">
+                                <Icon name="star" />
                                 {reach.toLocaleString()}
-                              </Header>
+                              </Label>
                             ) : (
-                              <>
+                              <Label color="blue" size="large">
+                                <Icon name="diamond" />
                                 {reach.toLocaleString()}
-                                <Icon name="star outline" />
-                              </>
+                              </Label>
                             )}
                           </Table.Cell>
                           <Table.Cell>
