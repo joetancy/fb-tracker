@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "7362d9965fab6bc56607",
-    "url": "/fb-tracker/static/js/main.7362d996.chunk.js"
+    "revision": "387589d86b404c8f9ecd",
+    "url": "/fb-tracker/static/js/main.387589d8.chunk.js"
   },
   {
     "revision": "077d3594ac13168c77e4",
@@ -60,12 +60,12 @@ self.__precacheManifest = [
     "url": "/fb-tracker/static/media/icons.b87b9ba5.ttf"
   },
   {
-    "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
-    "url": "/fb-tracker/static/media/brand-icons.c5ebe0b3.ttf"
-  },
-  {
     "revision": "13db00b7a34fee4d819ab7f9838cc428",
     "url": "/fb-tracker/static/media/brand-icons.13db00b7.eot"
+  },
+  {
+    "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
+    "url": "/fb-tracker/static/media/brand-icons.c5ebe0b3.ttf"
   },
   {
     "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
     "url": "/fb-tracker/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "81ef3e62d6ecd3312f81384d651f21a2",
+    "revision": "6221558c3d2597ff1121f89935dad87f",
     "url": "/fb-tracker/index.html"
   }
 ];
