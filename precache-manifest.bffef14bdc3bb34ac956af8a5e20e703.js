@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "afbbb9618ea20a2c2693",
-    "url": "/fb-tracker/static/js/main.afbbb961.chunk.js"
+    "revision": "66b606d48acb7dbb7ace",
+    "url": "/fb-tracker/static/js/main.66b606d4.chunk.js"
   },
   {
     "revision": "077d3594ac13168c77e4",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
     "url": "/fb-tracker/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "f32ea6ce549939cd1b2891c910b00898",
+    "revision": "82899373710be0363154b69b29f898cb",
     "url": "/fb-tracker/index.html"
   }
 ];
