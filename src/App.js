@@ -12,8 +12,8 @@ import {
   Grid,
   Header,
   Icon,
-  Input,
   Form,
+  TextArea,
   Button,
   Select,
   Loader,
@@ -61,6 +61,7 @@ class App extends Component {
       if (user) {
         this.loginFacebook();
         this.setState({appUserID: user.uid});
+        console.log(user.uid)
         this.setState({loading: true});
       } else {
         this.firebaseUI();
@@ -82,7 +83,10 @@ class App extends Component {
       signInOptions: [
         {
           provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-          scopes: ['manage_pages', 'read_insights']
+          scopes: ['manage_pages', 'read_insights'],
+          customParameters: {
+            auth_type: 'reauthenticate'
+          }
         }
       ]
     };
@@ -91,6 +95,7 @@ class App extends Component {
 
   signOut() {
     firebase.auth().signOut();
+    this.setState({data: []});
   }
 
   loadFacebook() {
@@ -218,6 +223,7 @@ class App extends Component {
         {text: 'Link', link: element.link, color: 'blue'}
       ]);
     });
+
     var docDefinition = {
       pageOrientation: 'landscape',
       pageSize: 'A4',
@@ -230,7 +236,11 @@ class App extends Component {
             body: pdfData
           }
         },
-        {text: 'Generated on ' + moment().format('MMMM Do YYYY, h:mm:ss a'), margin: [0, 16, 0, 0], fontSize: 8},
+        {
+          text: 'Generated on ' + moment().format('MMMM Do YYYY, h:mm:ss a'),
+          margin: [0, 16, 0, 0],
+          fontSize: 8
+        }
       ]
     };
     pdfMake.createPdf(docDefinition).open();
@@ -253,7 +263,11 @@ class App extends Component {
 
   addToList = (e) => {
     e.preventDefault();
-    this.getMetrics(this.state.currentValue);
+    let links = this.state.currentValue;
+    links = links.split('\n');
+    links.forEach((element) => {
+      this.getMetrics(element);
+    });
   };
 
   getMetricsRefresh = (element) => {
@@ -394,7 +408,7 @@ class App extends Component {
 
         let valueList = this.state.data;
         valueList.push(postData);
-        this.setState({data: valueList});
+        this.setState({data: valueList, currentValue: ''});
         this.saveToDB();
       }
     );
@@ -510,28 +524,31 @@ class App extends Component {
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
-              <Grid.Column width={10}>
-                <Form onSubmit={this.addToList}>
-                  <Input
+            <Container>
+              <Form onSubmit={this.addToList}>
+                <Form.Group>
+                  <TextArea
                     defaultValue={this.state.currentValue}
                     onChange={this.handleInputChange}
                     fluid
                     required
                     placeholder="Link"
-                    type="url"
-                  >
-                    <input />
-                    <Select
-                      placeholder="Page"
-                      options={this.state.facebookData}
-                      onChange={this.handleDropdownChange}
-                    />
-                    <Button type="submit">
-                      <Icon fitted name="add" />
-                    </Button>
-                  </Input>
-                </Form>
-              </Grid.Column>
+                    type="text"
+                    value={this.state.currentValue}
+                    width={8}
+                  />
+                  <Select
+                    placeholder="Page"
+                    options={this.state.facebookData}
+                    onChange={this.handleDropdownChange}
+                    width={3}
+                  />
+                  <Button type="submit" width={3}>
+                    <Icon fitted name="add" />
+                  </Button>
+                </Form.Group>
+              </Form>
+            </Container>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column width={10}>
@@ -540,9 +557,14 @@ class App extends Component {
                   content="Force Refresh"
                   onClick={this.forceRefresh}
                 />
+                {/* <Button
+                  color="teal"
+                  content="Get Video"
+                  onClick={this.forceRefresh}
+                /> */}
                 <Button
                   color="blue"
-                  content="Build Report"
+                  content="Export Report"
                   onClick={this.buildReport}
                 />
                 <Button content="Sign Out" onClick={this.signOut} />
