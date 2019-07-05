@@ -1,14 +1,14 @@
 {
-  "main.js": "/fb-tracker/static/js/main.3f6dc980.chunk.js",
-  "main.js.map": "/fb-tracker/static/js/main.3f6dc980.chunk.js.map",
-  "runtime~main.js": "/fb-tracker/static/js/runtime~main.077d3594.js",
-  "runtime~main.js.map": "/fb-tracker/static/js/runtime~main.077d3594.js.map",
-  "static/css/2.3ae0e928.chunk.css": "/fb-tracker/static/css/2.3ae0e928.chunk.css",
-  "static/js/2.d04b10ce.chunk.js": "/fb-tracker/static/js/2.d04b10ce.chunk.js",
-  "static/js/2.d04b10ce.chunk.js.map": "/fb-tracker/static/js/2.d04b10ce.chunk.js.map",
-  "index.html": "/fb-tracker/index.html",
-  "precache-manifest.96d21211d7632f20bce239f5f2708c87.js": "/fb-tracker/precache-manifest.96d21211d7632f20bce239f5f2708c87.js",
-  "service-worker.js": "/fb-tracker/service-worker.js",
-  "static/css/2.3ae0e928.chunk.css.map": "/fb-tracker/static/css/2.3ae0e928.chunk.css.map",
-  "static/media/semantic.min.css": "/fb-tracker/static/media/outline-icons.ef60a4f6.woff"
+  "main.js": "/edt-tracker/static/js/main.e09bdd39.chunk.js",
+  "main.js.map": "/edt-tracker/static/js/main.e09bdd39.chunk.js.map",
+  "runtime~main.js": "/edt-tracker/static/js/runtime~main.216cf919.js",
+  "runtime~main.js.map": "/edt-tracker/static/js/runtime~main.216cf919.js.map",
+  "static/css/2.7da2d796.chunk.css": "/edt-tracker/static/css/2.7da2d796.chunk.css",
+  "static/js/2.3789972c.chunk.js": "/edt-tracker/static/js/2.3789972c.chunk.js",
+  "static/js/2.3789972c.chunk.js.map": "/edt-tracker/static/js/2.3789972c.chunk.js.map",
+  "index.html": "/edt-tracker/index.html",
+  "precache-manifest.662c327dd27575ceab92f6328a382721.js": "/edt-tracker/precache-manifest.662c327dd27575ceab92f6328a382721.js",
+  "service-worker.js": "/edt-tracker/service-worker.js",
+  "static/css/2.7da2d796.chunk.css.map": "/edt-tracker/static/css/2.7da2d796.chunk.css.map",
+  "static/media/semantic.min.css": "/edt-tracker/static/media/outline-icons.ef60a4f6.woff"
 }
