@@ -300,6 +300,7 @@ class App extends Component {
         access_token: pageData.access_token
       },
       (response) => {
+        console.log(response);
         if (type === 'video') {
           postData = {
             link: element.link,
