@@ -283,9 +283,12 @@ class App extends Component {
       }
     });
     if (type === 'video') {
+    //  url = `/${
+    //    pageData.value
+    //  }_${postId}/?fields=insights.metric(post_impressions,post_impressions_unique,post_video_views),name,message,created_time`;
       url = `/${
         pageData.value
-      }_${postId}/?fields=insights.metric(post_impressions,post_impressions_unique,post_video_views),name,message,created_time`;
+      }_${postId}/video_insights?metric=['total_video_impressions','total_video_impressions_unique','total_video_views']`;
     } else {
       url = `/${
         pageData.value
