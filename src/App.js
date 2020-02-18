@@ -21,7 +21,9 @@ import {
   Segment,
   Label
 } from 'semantic-ui-react';
-
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-158702635-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 class App extends Component {
